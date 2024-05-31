@@ -1,0 +1,32 @@
+.table {
+    width: 100%;
+    /* table-layout: fixed; */
+}
+
+.table th {
+    padding: 8px;
+    background-color: #eee;
+    
+}
+
+.table td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.table td:nth-child(1) {
+    width: 10%; 
+   }
+
+.table td:nth-child(2) {
+    width: 50%; 
+}
+
+.table td:nth-child(3) {
+    width: 15%; 
+}
+
+.table tr:nth-child(even) {
+    background-color: #f4f3f3;
+  }

@@ -1,0 +1,67 @@
+<table class="table">
+    <thead>
+        <tr class="table th">
+            <th>№</th>
+            <th>Назва</th>
+            <th>Наявність</th>
+            <th>Вартість</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="table td">1</td>
+        <td class="table td">John Deere 9R</td>
+        <td class="table td">на складі</td>
+        <td class="table td">3.000.200,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">2</td>
+        <td class="table td">John Deere 9RТ</td>
+        <td class="table td">на складі</td>
+        <td class="table td">3.000.800,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">3</td>
+        <td class="table td">John Deere 9RХ</td>
+        <td class="table td">на складі</td>
+        <td class="table td">4.000.600,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">4</td>
+        <td class="table td">John Deere 8R</td>
+        <td class="table td">на складі</td>
+        <td class="table td">2.000.800,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">5</td>
+        <td class="table td">John Deere 8RТ</td>
+        <td class="table td">на складі</td>
+        <td class="table td">3.000.000,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">6</td>
+        <td class="table td">John Deere 8RХ</td>
+        <td class="table td">на складі</td>
+        <td class="table td">3.000.150,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">7</td>
+        <td class="table td">John Deere 6R</td>
+        <td class="table td">очікується</td>
+        <td class="table td">2.000.200,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">8</td>
+        <td class="table td">John Deere 6RТ</td>
+        <td class="table td">очікується</td>
+        <td class="table td">3.000.400,00 грн</td>
+    </tr>
+    <tr>
+        <td class="table td">9</td>
+        <td class="table td">John Deere 6RХ</td>
+        <td class="table td">очікується</td>
+        <td class="table td">3.000.600,00 грн</td>
+    </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>

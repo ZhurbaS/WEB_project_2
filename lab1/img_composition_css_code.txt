@@ -1,0 +1,58 @@
+/* Composition */
+
+.composition {
+    width: 800px;
+    height: 400px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #fff;
+}
+
+.silo-plant {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tractor {
+    width: 150px;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 2;
+}
+
+.silo {
+    width: 150px;
+    position: absolute;
+    left: 190px;
+    bottom: 45px;
+    z-index: 2;
+}
+
+.square-silo {
+    width: 120px;
+    position: absolute;
+    left: 355px;
+    bottom: 35px;
+    z-index: 2;
+}
+
+.bucket-elevator {
+    width: 140px;
+    position: absolute;
+    left: 490px;
+    bottom: 35px;
+    z-index: 2;
+}
+
+.conveyor {
+    width: 140px;
+    position: absolute;
+    left: 640px;
+    bottom: 40px;
+    z-index: 2;
+}

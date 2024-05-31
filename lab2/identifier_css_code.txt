@@ -1,0 +1,9 @@
+/* Footer */
+
+#footer_id {
+    padding: 20px;
+
+    background-color: rgb(23, 114, 194);
+    color: #fff;
+    text-align: center;
+}

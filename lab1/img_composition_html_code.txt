@@ -1,0 +1,8 @@
+<div class="composition">
+            <img class="silo-plant" src="./img/Wheat4.jpg" alt="">
+            <img class="tractor" src="./img/tractor-icon-computer-file-tractor-png-1afbdeb18c7250f3f70910531ab55565.png" alt="">
+            <img class="silo" src="./img/silo1.png" alt="">
+            <img class="square-silo" src="./img/square silo.png" alt="">
+            <img class="bucket-elevator" src="./img/bucket elevator.png" alt="">
+            <img class="conveyor" src="./img/conveyor.png" alt="">
+        </div>

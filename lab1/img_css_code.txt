@@ -1,0 +1,14 @@
+/* Content */
+
+.intro-img {
+    border-radius: 10px;
+    box-shadow: 3px -3px 5px #c0c1e2;
+    background-color: #222;
+    opacity: 0.8;
+
+    transition: opasity 0.2s linear;
+}
+
+.intro-img:hover {
+    opacity: 1;
+}

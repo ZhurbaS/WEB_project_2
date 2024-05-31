@@ -1,0 +1,3 @@
+<div class="container">
+                <main class="content">
+                    <img class="img intro-img" src="./img/silo_plant-920x613.jpg" alt="" width="800px">
