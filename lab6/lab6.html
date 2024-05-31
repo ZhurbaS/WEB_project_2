@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛАБОРАТОРНА РОБОТА №6</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        body {
+            background-color: rgb(212, 255, 212);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ЛАБОРАТОРНА РОБОТА №6</h1>
+    <h2>Тема:
+        ОБ'ЄКТ. МЕТОДИ ОБ'ЄКТА. МАСИВ ОБ'ЄКТІВ. ДЕСТРУКТУРИЗАЦІЯ
+        ОБ'ЄКТІВ. CALLBACK. СТРІЛОЧНІ ФУНКЦІЇ. СТРІЛОЧНІ ФУНКЦІЇ ЯК КОЛБЕКИ.</h2>
+    <h2>Мета: придбати практичні навички роботи з об'єктами. Методи об'єкта.
+        Callback. Стрілочні функції. Стрілочні функції як колбеки.
+        Реалізація програм засовами мови JAVASCRIPT
+    </h2>
+
+    <h1>ХІД ВИКОНАННЯ РОБОТИ</h1>
+    <h3><u>Завдання №2</u></h3>
+    <p>Напишіть функцію getProductDetails, яка приймає ідентифікатор
+        товару productId та дві колбек-функції successCallback та errorCallback.
+        <br>
+        // Функція getProductDetails повинна отримати деталі про вказаний товар та передати їх у successCallback.
+        <br>
+        // У випадку якщо товар не знайдено, викликається errorCallback і передається повідомлення про помилку.
+
+    </p>
+    <button id="getProductButton">Отримати деталі товару</button>
+    <button id="getProductFailButton">Отримати деталі товару, помилка</button>
+    <script>
+
+        function successCallback(product) {
+            console.log("Деталі продукту:", product);
+        }
+
+        function errorCallback(errorMsg) {
+            console.error("Помилка:", errorMsg);
+        }
+        function getProductDetails(productId, successCallback, errorCallback) {
+
+            const products = [
+                { id: 1234, name: "prod4", price: 214 },
+                { id: 100, name: "prod3", price: 412 },
+                { id: 12, name: "prod2", price: 111 },
+                { id: 49, name: "prod1", price: 216 },
+            ];
+
+            const productDetails = products.find(item => item.id === productId);
+
+            if (productDetails) {
+                successCallback(productDetails);
+            } else {
+                errorCallback("Product not found");
+            }
+        }
+
+        document.getElementById("getProductButton").addEventListener("click", function () {
+            getProductDetails(100, successCallback, errorCallback);
+        });
+
+        document.getElementById("getProductFailButton").addEventListener("click", function () {
+            getProductDetails(1000, successCallback, errorCallback);
+        });
+    </script>
+    <h3>Код програми</h3>
+    <img src="images/task2code.PNG"><br>
+
+    <h3>Результати</h3>
+    <img src="images/task2test1.PNG" border="3">
+    <img src="images/task2test2.PNG" border="3">
+    <h3><u>Завдання №4</u></h3>
+    <p>З об'єкту concerts отримати масив, який буде містити лише імена міст. <br>
+        З масиву потрібно прибрати міста, в яких концерт уже пройшов і відсортувати їх у хронологічному порядку.
+        <br>
+        Результат вивести у консоль.
+        <br>
+        Очікуваний результат ["Одеса", "Умань", "Харків"]
+        <br>
+        Застосувати стрілочні функції
+        <br>
+        const concerts = {<br>
+        Київ: new Date("2020-04-01"),<br>
+        Умань: new Date("2025-07-02"),<br>
+        Вінниця: new Date("2020-04-21"),<br>
+        Одеса: new Date("2025-03-15"),<br>
+        Хмельницький: new Date("2020-04-18"),<br>
+        Харків: new Date("2025-07-10"),<br>
+        };
+    </p>
+    <button id="getCityListButton">Отримати список міст</button>
+    <script>
+
+        document.getElementById("getCityListButton").addEventListener("click", function () {
+
+            const concerts = {
+                Київ: new Date("2020-04-01"),
+                Умань: new Date("2025-07-02"),
+                Вінниця: new Date("2020-04-21"),
+                Одеса: new Date("2025-03-15"),
+                Хмельницький: new Date("2020-04-18"),
+                Харків: new Date("2025-07-10"),
+            };
+
+
+            const cities = Object.keys(concerts);
+
+
+            const currentDate = new Date();
+
+
+            const filteredCities = cities.filter(city => concerts[city] >= currentDate);
+
+
+            filteredCities.sort((cityA, cityB) => concerts[cityA] - concerts[cityB]);
+
+
+            console.log(filteredCities);
+        });
+    </script>
+    <h3>Код програми</h3>
+    <img src="images/task4code.PNG"><br>
+    <h3>Результати</h3>
+    <img src="images/task4test1.PNG" border="3">
+
+    <h3><u>Завдання №6</u></h3>
+    <p>
+        Напишіть функцію, яка приймає массив об'єктів і повертає новий массив об'єктів,
+        у якому є знижка на 30 % на всі медикаменти ціна, яких перевищує 300 грн
+        у масиві Надайте ід для кожного медикамента
+        <br>
+        const medicines = [
+        <br>
+        { name: "Noshpa", price: 170 },
+        <br>
+        { name: "Analgin", price: 55 },
+        <br>
+        { name: "Quanil", price: 310 },
+        <br>
+        { name: "Alphacholine", price: 390 },
+        <br>
+        ];
+
+    </p>
+    <button id="getMedicinesListButton">Медикаменти зі знижкою</button>
+    <script>
+        function getDiscountMedicinesList(medicines) {
+            return medicines.map((medicine, index) => {
+
+                const discount = medicine.price > 300 ? 0.3 : 0;
+                return {
+                    id: index + 1,
+                    name: medicine.name,
+                    price: medicine.price * (1.0 - discount)
+                };
+            });
+        }
+
+
+        const medicines = [
+            { name: "Noshpa", price: 170 },
+            { name: "Analgin", price: 55 },
+            { name: "Quanil", price: 310 },
+            { name: "Alphacholine", price: 390 },
+        ];
+
+
+        document.getElementById("getMedicinesListButton").addEventListener("click", function () {
+
+            const discountMedicines = getDiscountMedicinesList(medicines);
+            console.log(discountMedicines);
+        });
+
+    </script>
+
+    <h3>Код програми</h3>
+    <img src="images/task6code.PNG"><br>
+    <h3>Результати</h3>
+    <img src="images/task6test1.PNG" border="3">
+    <h3><u>Завдання №8</u></h3>
+    <p>
+        Напиши функцію конструктор Storage який створює об'єкти для управління складом товарів.
+        <br>
+        При виклику отримуватиме один агрумент - початковий масив товарів, і записувати їх
+        у властивість items.
+        <br>
+        Додай методи класу:
+        <br>
+        getItems() - повертайте масив товарів
+        <br>
+        addItems(item) - отримує новий товар та додає його до поточних
+        <br>
+        removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних
+        <br>
+        const arr = ["apple", "banana", "mango"]
+
+    </p>
+    <button id="getItemsButton">Отримати елементи</button>
+    <button id="getAddItemsButton">Додати елемент (orange)</button>
+    <button id="getRemoveItemsButton">Видалити елемент (mango)</button>
+    <script>
+        function Storage(inArr) {
+
+            this.items = inArr || [];
+
+            this.getItems = function () {
+                return this.items;
+            };
+
+            this.addItems = function (item) {
+                const index = this.items.indexOf(item);
+                if (index == -1) {
+                    this.items.push(item);
+                }
+            };
+
+            this.removeItem = function (item) {
+                const index = this.items.indexOf(item);
+                if (index !== -1) {
+                    this.items.splice(index, 1);
+                }
+            };
+        }
+
+        const arr = ["apple", "banana", "mango"]
+        const storage = new Storage(arr);
+
+        document.getElementById("getItemsButton").addEventListener("click", function () {
+            console.log(storage.getItems());
+        });
+
+        document.getElementById("getAddItemsButton").addEventListener("click", function () {
+            storage.addItems("orange");
+            console.log(storage.getItems());
+        });
+
+        document.getElementById("getRemoveItemsButton").addEventListener("click", function () {
+            storage.removeItem("mango");
+            console.log(storage.getItems());
+        });
+    </script>
+    <h3>Код програми</h3>
+    <img src="images/task8code.PNG"><br>
+    <h3>Результати</h3>
+    <img src="images/task8test1.PNG" border="3">
+    <img src="images/task8test2.PNG" border="3">
+    <img src="images/task8test3.PNG" border="3">
+
+    <h3><u>Завдання №9</u></h3>
+    <p>
+        Поверніть об'єкт, в якому вказано кількість тегів.
+        <br>
+        Очікуваний результат {js: 3, nodejs: 3, html: 2, css: 2, react: 2}
+        <br>
+        const tweets = [
+        <br>
+        { id: "000", likes: 5, tags: ["js", "nodejs"] },
+        <br>
+        { id: "001", likes: 2, tags: ["html", "css"] },
+        <br>
+        { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+        <br>
+        { id: "003", likes: 8, tags: ["css", "react"] },
+        <br>
+        { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+        <br>
+        ];
+
+    </p>
+    <button id="countTagsButton">Підрахувати кількість тегів</button>
+    <script>
+
+        document.getElementById("countTagsButton").addEventListener("click", function () {
+            const tweets = [
+                { id: "000", likes: 5, tags: ["js", "nodejs"] },
+                { id: "001", likes: 2, tags: ["html", "css"] },
+                { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+                { id: "003", likes: 8, tags: ["css", "react"] },
+                { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+            ];
+
+            const tags = {};
+
+            tweets.forEach(item => {
+
+                item.tags.forEach(tag => {
+
+                    if (tag in tags) {
+                        tags[tag] += 1;
+                    }
+
+                    else {
+                        tags[tag] = 1;
+                    }
+                });
+            });
+
+            console.log(tags);
+        });
+    </script>
+    <h3>Код програми</h3>
+    <img src="images/task9code.PNG"><br>
+    <h3>Результати</h3>
+    <img src="images/task9test1.PNG" border="3">
+
+    <h3><u>Завдання №10</u></h3>
+    <p>
+        Напишіть функцію checkBrackets(str) яка приймає рядок жс коду (someFn)
+        і перевіряє правильність закриття дужок () {} []
+        <br>
+        Якщо рядок містить коректний код функція повертає true.
+        <br>
+        В іншому випадку повертає false
+    </p>
+    <button id="checkBracketsButton1">Перевірка правильності закриття дужок №1</button>
+    <button id="checkBracketsButton2">Перевірка правильності закриття дужок №2</button>
+    <button id="checkBracketsButton3">Перевірка правильності закриття дужок №3</button>
+    <script>
+        function checkBrackets(str) {
+
+            const openedB = ['(', '{', '['];
+            const closedB = [')', '}', ']'];
+            const stack = [];
+            for (let ch of str) {
+
+                if (openedB.includes(ch)) {
+                    stack.push(ch);
+
+                } else if (closedB.includes(ch)) {
+
+                    const lastOpened = stack.pop();
+
+                    const appropClosed = closedB[openedB.indexOf(lastOpened)];
+
+                    if (ch !== appropClosed) { return false; }
+                }
+            }
+
+            return stack.length === 0;
+        }
+
+        document.getElementById("checkBracketsButton1").addEventListener("click", function () {
+            const someFn = 'function example() { if (true) { return 1; } }';
+            console.log(someFn);
+            console.log(checkBrackets(someFn));
+        });
+
+        document.getElementById("checkBracketsButton2").addEventListener("click", function () {
+            const incorrectFn = 'function example() { { }';
+            console.log(incorrectFn);
+            console.log(checkBrackets(incorrectFn));
+        });
+
+        document.getElementById("checkBracketsButton3").addEventListener("click", function () {
+            const incorrectFn = 'function example() { if (true) { return 1; } } )';
+            console.log(incorrectFn);
+            console.log(checkBrackets(incorrectFn));
+        });
+    </script>
+    <h3>Код програми</h3>
+    <img src="images/task10code.PNG"><br>
+    <h3>Результати</h3>
+    <img src="images/task10test1.PNG" border="3">
+    <img src="images/task10test2.PNG" border="3">
+    <img src="images/task10test3.PNG" border="3">
+
+    <h3>Висновки</h3>
+    <p>
+        В ході виконання роботи ознайомились з поняттям об'єта, методами об'єкта, масивом об'єктів, callback,
+        стрілочними функціями, стрілочними функціями як колбеками.
+        В результаті виконання роботи реалізували ряд програм засобами мови Javascript. І придбати
+        практичні навички роботи з об'єктами, його методами, колбеками,
+        стрілочними функціями та стрілочними функціями як колбеками.
+    </p>
+
+</body>
+
+</html>
